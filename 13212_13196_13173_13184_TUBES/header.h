@@ -75,9 +75,9 @@ void updateChild(addrChild C, string jenis, string alamat, double harga);
 
 //Fungsi Delete
 
-void deleteAtChild(addrChild *C, int nomor);
-void deleteAtParent(addrParent *first, string NIP);
-void deleteAllChild(addrChild *C);
+void deleteAtChild(addrChild *C, addrParent P, int nomor);
+void deleteAtParent(addrParent *search, addrParent first, string NIP);
+void deleteAllChild(addrChild *C, addrParent P);
 void deleteAllParent(addrParent *first);
 
 

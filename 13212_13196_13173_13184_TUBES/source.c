@@ -67,11 +67,11 @@ int countChild(addrChild C){
 
 bool isTeleponUsed(addrParent first, addrParent Target, string telepon){
 	if(first==NULL){
-		return true;
+		return false;
 	}
 	else if(first!=Target){
 		if(strcmp(first->DataParent.telepon, telepon)==0){
-			return false;
+			return true;
 		}
 		else{
 			return isTeleponUsed(first->nextParent, Target, telepon);
@@ -267,6 +267,58 @@ void updateChild(addrChild C, string jenis, string alamat, double harga){
 
 
 //Fungsi Delete
+void deleteAtChild(addrChild *C, addrParent P, int nomor){
+	if(*C==NULL){
+		return;
+	}
+	else if((*C)->DataChild.nomor==nomor){
+		addrChild temp =*C;
+		*C=temp->nextChild;
+		P->DataParent.totalPenjualan+=temp->DataChild.harga;
+		free(temp);
+	}
+	else{
+		deleteAtChild(&(*C)->nextChild, P, nomor);
+	}
+}
+
+void deleteAtParent(addrParent *search, addrParent first, string NIP){
+	if(*search==NULL){
+		return;
+	}
+	else if(strcmp((*search)->DataParent.NIP, NIP)==0){
+		relokasiChild(*search, first, first);
+		deleteAllChild(&(*search)->firstChild, *search);
+		addrParent temp =*search;
+		*search=temp->nextParent;
+		free(temp);
+	}
+	else{
+		deleteAtParent(&(*search)->nextParent, first, NIP);
+	}
+}
+
+void deleteAllChild(addrChild *C, addrParent P){
+	if(*C==NULL){
+		return;
+	}
+	else{
+		deleteAtChild(C, P, (*C)->DataChild.nomor);
+		deleteAllChild(C, P);
+	}
+}
+void deleteAllParent(addrParent *first){
+	if(isEmpty(*first)){
+		return;
+	}
+	else{
+		addrParent temp = *first;
+        *first = temp->nextParent;
+        deleteAllChild(&temp->firstChild, temp);
+        free(temp);
+        deleteAllParent(first);
+	}
+}
 
 
 
