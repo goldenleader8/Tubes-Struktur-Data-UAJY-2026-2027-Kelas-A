@@ -3,7 +3,50 @@
 #include <string.h>
 #include <stdbool.h>
 #include <conio.h>
-
+	// shortcut & organization
+#define PAUSE system("pause");
+#define CLEAR system("cls");
+#define FLUSH fflush(stdin);
+#define ERROR printf("\n\t[!] ");
+#define SUC_ADD printf("\n\t[+] ");
+#define SUC_RM printf("\n\t[-] ");
+#define NEW_LEFT_MARGIN printf("\n\t");
+#define NEW_LINE printf("\n");
+#define LEFT_MARGIN printf("\t");
+	// sigma color
+#define END "\x1b[0m"
+#define FORE_BLACK "\x1b[30m"
+#define FORE_RED "\x1b[31m"
+#define FORE_GREEN "\x1b[32m"
+#define FORE_YELLOW "\x1b[33m"
+#define FORE_BLUE "\x1b[34m"
+#define FORE_MAGENTA "\x1b[35m"
+#define FORE_CYAN "\x1b[36m"
+#define FORE_WHITE "\x1b[37m"
+#define FORE_BRIGHT_BLACK "\x1b[90m"
+#define FORE_BRIGHT_RED "\x1b[91m"
+#define FORE_BRIGHT_GREEN "\x1b[92m"
+#define FORE_BRIGHT_YELLOW "\x1b[93m"
+#define FORE_BRIGHT_BLUE "\x1b[94m"
+#define FORE_BRIGHT_MAGENTA "\x1b[95m"
+#define FORE_BRIGHT_CYAN "\x1b[96m"
+#define FORE_BRIGHT_WHITE "\x1b[97m"
+#define BACK_BLACK "\x1b[40m"
+#define BACK_RED "\x1b[41m"
+#define BACK_GREEN "\x1b[42m"
+#define BACK_YELLOW "\x1b[43m"
+#define BACK_BLUE "\x1b[44m"
+#define BACK_MAGENTA "\x1b[45m"
+#define BACK_CYAN "\x1b[46m"
+#define BACK_WHITE "\x1b[47m"
+#define BACK_BRIGHT_BLACK "\x1b[100m"
+#define BACK_BRIGHT_RED "\x1b[101m"
+#define BACK_BRIGHT_GREEN "\x1b[102m"
+#define BACK_BRIGHT_YELLOW "\x1b[103m"
+#define BACK_BRIGHT_BLUE "\x1b[104m"
+#define BACK_BRIGHT_MAGENTA "\x1b[105m"
+#define BACK_BRIGHT_CYAN "\x1b[106m"
+#define BACK_BRIGHT_WHITE "\x1b[107m"
 
 // Tipe Data
 typedef char string[128];
@@ -80,10 +123,5 @@ void deleteAtParent(addrParent *search, addrParent first, string NIP);
 void deleteAllChild(addrChild *C, addrParent P);
 void deleteAllParent(addrParent *first);
 
-
-
-
-
-
-
-
+// Main
+int mainMenu();

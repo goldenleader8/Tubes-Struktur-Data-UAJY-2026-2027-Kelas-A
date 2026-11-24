@@ -1,6 +1,5 @@
 #include "header.h"
 
-
 //Fungsi Pembantu
 
 	//Parent
@@ -320,7 +319,84 @@ void deleteAllParent(addrParent *first){
 	}
 }
 
+int mainMenu() {
+	int selected = 1;
+	int key;
+	
+	while (1) {
+		CLEAR
+		NEW_LEFT_MARGIN printf(BACK_WHITE"                                             "END);
+		NEW_LEFT_MARGIN printf(BACK_WHITE"        Sistem Informasi RealEstateXYZ       "END);
+		NEW_LEFT_MARGIN printf(BACK_WHITE"                PRO MAX 6000                 "END);
+		NEW_LEFT_MARGIN printf(BACK_WHITE"                                             "END);
+		NEW_LINE
+		
+		if (selected == 1) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Kontrak Sales Baru "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Kontrak Sales Baru ");
+		}
+		if (selected == 2) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Tambah Properti ke Sales "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Tambah Properti ke Sales ");
+		}
+		if (selected == 3) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Penjualan Properti "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Penjualan Properti ");
+		}
+		if (selected == 4) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Pengunduran Diri Sales "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Pengunduran Diri Sales ");
+		}
+		NEW_LINE
+		if (selected == 5) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Daftar Nama Sales "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Daftar Nama Sales ");
+		}
+		if (selected == 6) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Properti Belum Terjual per Sales "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Properti Belum Terjual per Sales ");
+		}
+		if (selected == 7) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Jumlah Total Properti per Jenis "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Jumlah Total Properti per Jenis ");
+		}
+		NEW_LINE
+		if (selected == 8) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Tampilan Seluruh Data "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Tampilan Seluruh Data ");
+		}
+		if (selected == 0) {
+			NEW_LEFT_MARGIN printf(BACK_BRIGHT_BLACK"> Keluar "END);
+		} else {
+			NEW_LEFT_MARGIN printf("  Keluar ");
+		}
+		NEW_LINE
+		key = getch();
 
+		if (key == 224) { // kata google ini scan char arrow untuk windows 11, setelah 224 nanti difollow scan code per arrow
+			key = getch();
+			if (key == 72) { // panah atas
+				if (selected == 1) selected = 0;
+				else if (selected == 0) selected = 8;
+				else selected--;
+			} else if (key == 80) { // panas bawah
+				if (selected == 8) selected = 0;
+				else if (selected == 0) selected = 1;
+				else selected++;
+			}
+		} else if (key == 13) { // enter
+			return selected;
+		}
+	}
+}
 
 
 
